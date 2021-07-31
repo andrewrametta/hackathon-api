@@ -9,6 +9,16 @@ const WalletService = {
   getWalletByUserId(knex, user_id) {
     return knex.from("wallet").select("*").where("user_id", user_id).first();
   },
+
+  insertWallet(knex, newWallet) {
+    return knex
+      .insert(newWallet)
+      .into("wallet")
+      .returning("*")
+      .then((rows) => {
+        return rows[0];
+      });
+  },
 };
 
 module.exports = WalletService;

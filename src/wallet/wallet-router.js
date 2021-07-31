@@ -42,3 +42,5 @@ walletRouter
       })
       .catch(next);
   });
+
+module.exports = walletRouter;

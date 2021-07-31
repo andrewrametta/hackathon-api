@@ -19,6 +19,10 @@ const WalletService = {
         return rows[0];
       });
   },
+
+  updateWallet(knex, wallet_id, newWalletFields) {
+    return knex("wallet").where("id", wallet_id).update(newWalletFields);
+  },
 };
 
 module.exports = WalletService;

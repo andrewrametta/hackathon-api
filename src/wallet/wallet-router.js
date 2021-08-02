@@ -14,13 +14,10 @@ const serializeWallet = (wallet) => ({
 
 walletRouter
   .route("/")
-  .get(requireAuth, (req, res, next) => {
-    const knexInstance = req.app.get("db");
-
-    const user_id = req.user.id;
-    WalletService.getWalletByUserId(knexInstance, user_id)
-      .then((wallet) => {
-        res.json(serializeWallet(wallet));
+  .get((req, res, next) => {
+    WalletService.getAllWallets(req.app.get("db"))
+      .then((wallets) => {
+        res.json(wallets.map(serializeWallet));
       })
       .catch(next);
   })

@@ -39,7 +39,7 @@ walletRouter
         res
           .status(201)
           .location(`/wallet/${wallet.id}`)
-          .json(serializeItem(wallet));
+          .json(serializeWallet(wallet));
       })
       .catch(next);
   });

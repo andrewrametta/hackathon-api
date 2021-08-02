@@ -1,6 +1,6 @@
 const express = require("express");
 const uploadRouter = express.Router();
-const { cloudinary } = require("../../utilities/cloundinary");
+const { cloudinary } = require("../../utilities/cloudinary");
 
 uploadRouter.route("/").post((req, res, next) => {
   const fileString = req.body.data;

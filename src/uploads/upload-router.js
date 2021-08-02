@@ -6,7 +6,7 @@ uploadRouter.route("/").post((req, res, next) => {
   const fileString = req.body.data;
   cloudinary.uploader
     .upload(fileString, {
-      upload_preset: "payitforward",
+      upload_preset: "blackjack",
       timeout: 100000,
     })
     .then((img) => {

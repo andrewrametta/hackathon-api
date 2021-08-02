@@ -7,6 +7,7 @@ const { NODE_ENV } = require("./config");
 const usersRouter = require("./users/users-router");
 const authRouter = require("./auth/auth-router");
 const walletRouter = require("./wallet/wallet-router");
+const uploadRouter = require("./uploads/upload-router");
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.get("/", (req, res) => {
 app.use("/api/users", usersRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/wallet", walletRouter);
+app.use("/api/uploads", uploadRouter);
 
 app.use(function errorHandler(error, req, res, next) {
   let response;

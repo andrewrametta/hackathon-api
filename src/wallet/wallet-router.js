@@ -8,6 +8,8 @@ const walletRouter = express.Router();
 const serializeWallet = (wallet) => ({
   id: wallet.id,
   total: xss(wallet.total),
+  username: wallet.username,
+  userUrl: wallet.userUrl,
 });
 
 walletRouter
@@ -17,8 +19,8 @@ walletRouter
 
     const user_id = req.user.id;
     WalletService.getWalletByUserId(knexInstance, user_id)
-      .then((wallets) => {
-        res.json(wallets.map(serializeWallet));
+      .then((wallet) => {
+        res.json(serializeWallet(wallet));
       })
       .catch(next);
   })

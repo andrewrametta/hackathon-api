@@ -18,8 +18,8 @@ walletRouter
 
     const user_id = req.user.id;
     WalletService.getWalletByUserId(knexInstance, user_id)
-      .then((wallet) => {
-        res.json(wallet.map(serializeWallet));
+      .then((wallets) => {
+        res.json(wallets.map(serializeWallet));
       })
       .catch(next);
   })

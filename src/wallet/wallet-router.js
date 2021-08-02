@@ -7,7 +7,6 @@ const walletRouter = express.Router();
 
 const serializeWallet = (wallet) => ({
   id: wallet.id,
-  user_id: wallet.user_id,
   total: xss(wallet.total),
 });
 

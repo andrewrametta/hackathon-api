@@ -10,7 +10,7 @@ const serializeWallet = (wallet) => ({
   total: xss(wallet.total),
   user_id: wallet.user_id,
   username: wallet.username,
-  userUrl: wallet.userUrl,
+  userUrl: wallet.user_url,
 });
 
 walletRouter

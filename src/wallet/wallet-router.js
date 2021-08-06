@@ -42,4 +42,23 @@ walletRouter
       .catch(next);
   });
 
+walletRouter.route("/:wallet_id").patch((req, res, next) => {
+  const { total } = req.body;
+  const walletToUpdate = { total };
+  const numberOfValues = Object.values(walletToUpdate).filter(Boolean).length;
+  if (numberOfValues === 0) {
+    return res.status(400).json({
+      error: {
+        message: `Request body must contain 'total'`,
+      },
+    });
+  }
+  const id = req.params.wallet_id;
+  WalletService.updateWallet(req.app.get("db"), id, walletToUpdate)
+    .then((rowsAffected) => {
+      res.status(204).json({ ...walletToUpdate, id: req.params.id });
+    })
+    .catch(next);
+});
+
 module.exports = walletRouter;
